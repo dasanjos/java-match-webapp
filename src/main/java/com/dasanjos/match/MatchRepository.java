@@ -2,8 +2,11 @@ package com.dasanjos.match;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 import java.util.Random;
+
+import org.joda.time.DateTime;
+import org.joda.time.Interval;
+import org.joda.time.Period;
 
 import com.dasanjos.match.model.Match;
 
@@ -67,19 +70,28 @@ public class MatchRepository {
 			"Wellington", "West Island", "Willemstad", "Willemstad",
 			"Windhoek", "Yamoussoukro", "Yaounde", "Yaren", "Yerevan", "Zagreb" };
 
-	public Collection<Match> getMatches(Date dateUtc) {
+	public Collection<Match> getMatches(DateTime dateUtc) {
 		Collection<Match> result = new ArrayList<>();
-		// Check if dateUtc is today, yesterday or tomorrow
-		if (true) {
-			int matches = new Random().nextInt(2);
-			for (int i = 0; i <= matches; i++) {
-				result.add(randomMatch(new Date()));
-			}
+
+		DateTime today = new DateTime().withTimeAtStartOfDay();
+		DateTime yesterday = today.minus(Period.days(1));
+		DateTime tomorrow = today.plus(Period.days(2)).minus(Period.millis(1));
+		if (new Interval(yesterday, tomorrow).contains(dateUtc)) {
+			result.addAll(randomMatches(today));
 		}
 		return result;
 	}
 
-	protected Match randomMatch(Date date) {
+	protected Collection<Match> randomMatches(DateTime date) {
+		Collection<Match> result = new ArrayList<>();
+		int matches = new Random().nextInt(2);
+		for (int i = 0; i <= matches; i++) {
+			result.add(randomMatch(date));
+		}
+		return result;
+	}
+
+	protected Match randomMatch(DateTime date) {
 		Match match = new Match();
 		Random random = new Random();
 		int awayIndex = random.nextInt(WORLD_CAPITALS.length);

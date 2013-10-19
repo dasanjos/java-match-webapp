@@ -1,6 +1,6 @@
 package com.dasanjos.match.model;
 
-import java.util.Date;
+import org.joda.time.DateTime;
 
 public class Match {
 
@@ -8,7 +8,7 @@ public class Match {
 	private String AwayTeamName;
 	private int HomeScore;
 	private int AwayScore;
-	private Date KickoffUtc;
+	private DateTime KickoffUtc;
 
 	public String getHomeTeamName() {
 		return HomeTeamName;
@@ -42,11 +42,11 @@ public class Match {
 		AwayScore = awayScore;
 	}
 
-	public Date getKickoffUtc() {
+	public DateTime getKickoffUtc() {
 		return KickoffUtc;
 	}
 
-	public void setKickoffUtc(Date kickoffUtc) {
+	public void setKickoffUtc(DateTime kickoffUtc) {
 		KickoffUtc = kickoffUtc;
 	}
 }
