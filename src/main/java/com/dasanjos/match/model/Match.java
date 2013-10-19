@@ -1,6 +1,7 @@
 package com.dasanjos.match.model;
 
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
 
 public class Match {
 
@@ -48,5 +49,9 @@ public class Match {
 
 	public void setKickoffUtc(DateTime kickoffUtc) {
 		KickoffUtc = kickoffUtc;
+	}
+
+	public String getTime() {
+		return DateTimeFormat.forPattern("HH:mm").print(KickoffUtc);
 	}
 }
