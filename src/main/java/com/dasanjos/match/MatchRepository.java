@@ -77,7 +77,7 @@ public class MatchRepository {
 		DateTime yesterday = today.minus(Period.days(1));
 		DateTime tomorrow = today.plus(Period.days(2)).minus(Period.millis(1));
 		if (new Interval(yesterday, tomorrow).contains(dateUtc)) {
-			result.addAll(randomMatches(today));
+			result.addAll(randomMatches(dateUtc));
 		}
 		return result;
 	}
