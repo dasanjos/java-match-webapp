@@ -1,15 +1,28 @@
 java-match-webapp
 =================
 
-Java REST based Match Web App for 2013 Microsoft SDE Technical Exercise
+Java REST based Match Web App made in Java 7 for the 2.5 Servlet specification that can be deployed in Apache Tomcat 7.0 (or higher) application server.  
 
-To start, open command line and type
+Application Backend uses Maven 3 Open Source Apache dependency and build manager and Spring MVC 3.2 Open Source Java application framework, and Frontend uses HTML5 and JQuery 1.7.
+ 
+A database schema was created describing a simple DB implementation for storing and retrieving matches data.
+  
+  /java-match-webapp/src/main/resources/schema.sql
+ 
+Developed in 4h using Eclipse Open Source IDE for 2013 Microsoft SDE Technical Exercise, and tested in IE10, Chrome 30 and Firefox 24 on a computer running Windows 8 OS.
+
+
+### Running the webapp
+
+To start the webapp on http://localhost:8080/ setup Java 7 SDK and Maven 3, checkout the source code and type the following on the webapp root folder using the command-line:
 
 	mvn jetty:run
 
+Alternatively, start the webapp on http://localhost:8080/matches/ by uploading the matches.war to a running Tomcat 7+ web server.
 
-Microsoft SDE Technical Exercise
---------------------------------
+
+Technical Exercise Description
+------------------------------
 
 ASP.NET MVC – C#, HTML, JavaScript, CSS
 

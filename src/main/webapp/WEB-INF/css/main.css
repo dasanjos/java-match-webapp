@@ -8,6 +8,7 @@ body {
 header {
 	background: #1570A6;
 	color: #FFF;
+	height: 35px;
 }
 
 header a {

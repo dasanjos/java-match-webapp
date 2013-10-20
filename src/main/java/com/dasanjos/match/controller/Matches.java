@@ -18,14 +18,14 @@ public class Matches {
 
 	private MatchRepository repository = new MatchRepository();
 
-	@RequestMapping("/")
+	@RequestMapping(value={"/", "/matches"}, method = RequestMethod.GET)
 	public ModelAndView root() {
 		ModelAndView result = new ModelAndView("index");
 		result.getModel().put("today", getUrl(new DateTime()));
 		return result;
 	}
 
-	@RequestMapping(value = "/matches/{year}/{month}/{day}", method = RequestMethod.GET)
+	@RequestMapping(value={"/{year}/{month}/{day}", "/matches/{year}/{month}/{day}"}, method = RequestMethod.GET)
 	public ModelAndView matches(@PathVariable("year") int year,
 			@PathVariable("month") int month, @PathVariable("day") int day) {
 

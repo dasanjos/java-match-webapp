@@ -1,4 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html lang="en">
 	<head>
@@ -7,9 +7,9 @@
 		<meta name="description" content="Microsoft - SDE Technical Exercise">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">	
-		<link rel="stylesheet" href="/css/main.css">
-		<link rel="shortcut icon" href="/favicon.ico">
-		<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>		
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
+		<link rel="shortcut icon" href="${pageContext.request.contextPath}/favicon.ico">
+		<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.7.2.min.js"></script>		
 	</head>
 	<body>
 		<header>
