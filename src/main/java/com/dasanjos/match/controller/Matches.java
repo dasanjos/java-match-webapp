@@ -1,5 +1,7 @@
 package com.dasanjos.match.controller;
 
+import java.util.Random;
+
 import org.joda.time.DateTime;
 import org.joda.time.Period;
 import org.joda.time.format.DateTimeFormat;
@@ -27,7 +29,7 @@ public class Matches {
 	public ModelAndView matches(@PathVariable("year") int year,
 			@PathVariable("month") int month, @PathVariable("day") int day) {
 
-		DateTime date = new DateTime(year, month, day, 12, 0);
+		DateTime date = new DateTime(year, month, day, new Random().nextInt(24), 0);
 		ModelAndView result = new ModelAndView("index");
 		result.getModel().put("today", getUrl(new DateTime()));
 		result.getModel().put("date", DateTimeFormat.forPattern("EEEE, dd MMMM").print(date));
