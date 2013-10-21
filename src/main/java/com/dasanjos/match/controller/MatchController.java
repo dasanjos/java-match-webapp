@@ -1,5 +1,6 @@
 package com.dasanjos.match.controller;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import org.joda.time.DateTime;
@@ -14,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.dasanjos.match.MatchRepository;
 
 @Controller
-public class Matches {
+public class MatchController {
 
 	private MatchRepository repository = new MatchRepository();
 
@@ -29,13 +30,17 @@ public class Matches {
 	public ModelAndView matches(@PathVariable("year") int year,
 			@PathVariable("month") int month, @PathVariable("day") int day) {
 
-		DateTime date = new DateTime(year, month, day, new Random().nextInt(24), 0);
 		ModelAndView result = new ModelAndView("index");
 		result.getModel().put("today", getUrl(new DateTime()));
-		result.getModel().put("date", DateTimeFormat.forPattern("EEEE, dd MMMM").print(date));
-		result.getModel().put("matches", repository.getMatches(date));
-		result.getModel().put("earlier", getUrl(date.minus(Period.days(1))));
-		result.getModel().put("later", getUrl(date.plus(Period.days(1))));
+		try {
+			DateTime date = new DateTime(year, month, day, new Random().nextInt(24), 0);
+			result.getModel().put("matches", repository.getMatches(date));
+			result.getModel().put("date", DateTimeFormat.forPattern("EEEE, dd MMMM").print(date));
+			result.getModel().put("earlier", getUrl(date.minus(Period.days(1))));
+			result.getModel().put("later", getUrl(date.plus(Period.days(1))));
+		} catch (Exception e){
+			result.getModel().put("matches", new ArrayList<>());
+		}
 		return result;
 	}
 
